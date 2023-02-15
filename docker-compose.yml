@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  webapi:
+    image: webapi
+    build:
+      context: ./webapi
+      dockerfile: ./Dockerfile
+    ports:
+      - 5010:5010
+  webapp:
+    image: webapp
+    build:
+      context: ./webapp
+      dockerfile: ./Dockerfile
+    ports:
+      - 4200:80
