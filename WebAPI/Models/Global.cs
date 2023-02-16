@@ -13,7 +13,7 @@
     public enum Importance
     {
         Low,
-        Medium,
+        Normal,
         High,
         Critical,
     }

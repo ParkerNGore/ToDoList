@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Models;
+using WebAPI.Models.DbModels;
 
 namespace WebAPI.Data.Configurations
 {

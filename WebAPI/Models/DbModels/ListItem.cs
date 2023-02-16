@@ -1,6 +1,6 @@
-﻿using WebAPI.Models.Interfaces;
+﻿using WebAPI.Models.DbModels.Interfaces;
 
-namespace WebAPI.Models
+namespace WebAPI.Models.DbModels
 {
     public class ListItem : IDbItem
     {

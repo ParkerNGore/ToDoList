@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebAPI.Models.Interfaces
+namespace WebAPI.Models.DbModels.Interfaces
 {
     public interface IDbItem
     {
