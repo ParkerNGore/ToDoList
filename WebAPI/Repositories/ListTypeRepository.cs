@@ -1,8 +1,12 @@
-﻿using WebAPI.Repositories.Interfaces;
+﻿using WebAPI.Data;
+using WebAPI.Models.DbModels;
+using WebAPI.Repositories.Interfaces;
 
 namespace WebAPI.Repositories
 {
-    public class ListTypeRepository: IListTypeRepository
+    public class ListTypeRepository: GenericRepository<ListType>, IListTypeRepository
     {
+        public ListTypeRepository(DataContext context) : base(context) { }
+
     }
 }

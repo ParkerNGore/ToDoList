@@ -1,4 +1,5 @@
 ﻿using WebAPI.Models.DbModels.Interfaces;
+using WebAPI.Models.Dtos;
 
 namespace WebAPI.Models.DbModels
 {
@@ -19,5 +20,15 @@ namespace WebAPI.Models.DbModels
         #endregion Relationships
 
         public ListItem() { }
+        public ListItem(CreateListItemDto dto)
+        {
+            this.DueDate = dto.DueDate;
+            this.Title = dto.Title;
+            this.Description = dto.Description;
+            this.Frequency = dto.Frequency;
+            this.Importance = dto.Importance;
+            this.ListTypeName = dto.ListTypeName;
+        }
+
     }
 }

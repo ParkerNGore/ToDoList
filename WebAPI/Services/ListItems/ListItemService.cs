@@ -23,7 +23,7 @@ namespace WebAPI.Services.ListItems
             this.updateListService = updateListService;
         }
 
-        public ListItem GetListItem(int id) => getListService.GetListItem(id);
+        public ListItem GetListItem(string id) => getListService.GetListItem(id);
         public IEnumerable<ListItem> GetAllLists() => getAllListsService.GetAllLists();
         public ListItem Create(CreateListItemDto dto) => createListService.Create(dto);
         public ListItem Delete(string id) => deleteListService.Delete(id);

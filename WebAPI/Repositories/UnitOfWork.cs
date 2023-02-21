@@ -10,8 +10,8 @@ namespace WebAPI.Repositories
         public UnitOfWork(DataContext context)
         {
             this.context = context;
-            ListItem = new ListItemRepository();
-            ListType = new ListTypeRepository();
+            ListItem = new ListItemRepository(context);
+            ListType = new ListTypeRepository(context);
         }
         public IListItemRepository ListItem { get; private set; }
         public IListTypeRepository ListType { get; private set; }

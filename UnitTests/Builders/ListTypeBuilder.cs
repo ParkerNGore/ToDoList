@@ -17,7 +17,5 @@ namespace UnitTests.Builders
                 Name = faker.Random.Word(),
             };
         }
-
-
     }
 }

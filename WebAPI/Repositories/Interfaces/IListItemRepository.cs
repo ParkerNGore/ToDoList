@@ -1,6 +1,8 @@
-﻿namespace WebAPI.Repositories.Interfaces
+﻿using WebAPI.Models.DbModels;
+
+namespace WebAPI.Repositories.Interfaces
 {
-    public interface IListItemRepository
+    public interface IListItemRepository: IGenericRepository<ListItem>
     {
     }
 }

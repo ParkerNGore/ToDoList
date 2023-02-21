@@ -3,9 +3,9 @@ using WebAPI.Services.ListItems.Interfaces;
 
 namespace WebAPI.Services.ListItems
 {
-    public class GetListService : IGetListService
+    public class GetAllListsByTypeService : IGetAllListsByType
     {
-        public ListItem GetListItem(string id)
+        public IEnumerable<ListItem> GetAllListItemsByType(string typeName)
         {
             throw new NotImplementedException();
         }
