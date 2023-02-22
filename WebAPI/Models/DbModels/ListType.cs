@@ -1,9 +1,11 @@
-﻿using WebAPI.Models.DbModels.Interfaces;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using WebAPI.Models.DbModels.Interfaces;
 
 namespace WebAPI.Models.DbModels
 {
     public class ListType : IDbItem
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime LastUpdatedDate { get; set; } = DateTime.Now;

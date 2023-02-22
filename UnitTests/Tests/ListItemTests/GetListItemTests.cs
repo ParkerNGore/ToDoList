@@ -16,7 +16,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var getListItemService = new GetListService();
 
             var itemType = ListTypeBuilder.BuildDefault();
@@ -45,7 +45,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var getAllListsByTypeService = new GetAllListsByTypeService();
 
             var itemType = ListTypeBuilder.BuildDefault();
@@ -70,7 +70,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var getListItemService = new GetListService();
 
             context.Add(ListTypeBuilder.BuildDefault());
@@ -88,7 +88,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var getAllListsService = new GetAllListsService();
 
             context.Add(ListTypeBuilder.BuildDefault());

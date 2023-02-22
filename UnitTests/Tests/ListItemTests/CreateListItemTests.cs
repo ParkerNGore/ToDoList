@@ -17,7 +17,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
 
 
             var itemType = ListTypeBuilder.BuildDefault();
@@ -54,7 +54,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
 
             var createListItemDto = ListItemBuilder.BuildRandom();
 
@@ -67,7 +67,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
 
             var itemType = ListTypeBuilder.BuildDefault();
             context.Add(itemType);
@@ -84,7 +84,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
 
             var createListItemDto = ListItemBuilder.BuildRandom();
             createListItemDto.IsNewListType = true;

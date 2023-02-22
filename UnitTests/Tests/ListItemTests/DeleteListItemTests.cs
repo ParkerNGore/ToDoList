@@ -18,7 +18,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
 
             var listType = ListTypeBuilder.BuildDefault();
             context.Add(listType);

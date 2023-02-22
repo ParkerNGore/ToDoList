@@ -18,7 +18,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var updateListItemService = new UpdateListItemService();
 
             var itemType = ListTypeBuilder.BuildDefault();
@@ -74,7 +74,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var updateListItemService = new UpdateListItemService();
 
             var itemType = ListTypeBuilder.BuildDefault();
@@ -94,7 +94,7 @@ namespace UnitTests.Tests.ListItemTests
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
-            var createListItemService = new CreateListItemService();
+            var createListItemService = new CreateListItemService(unitOfWork);
             var updateListItemService = new UpdateListItemService();
 
             var itemType = ListTypeBuilder.BuildDefault();

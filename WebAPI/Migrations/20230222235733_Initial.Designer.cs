@@ -12,7 +12,7 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230216004727_Initial")]
+    [Migration("20230222235733_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,10 @@ namespace WebAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("WebAPI.Models.ListItem", b =>
+            modelBuilder.Entity("WebAPI.Models.DbModels.ListItem", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -65,9 +66,10 @@ namespace WebAPI.Migrations
                     b.ToTable("ListItems");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.ListType", b =>
+            modelBuilder.Entity("WebAPI.Models.DbModels.ListType", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -89,9 +91,9 @@ namespace WebAPI.Migrations
                     b.ToTable("ListTypes");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.ListItem", b =>
+            modelBuilder.Entity("WebAPI.Models.DbModels.ListItem", b =>
                 {
-                    b.HasOne("WebAPI.Models.ListType", "Type")
+                    b.HasOne("WebAPI.Models.DbModels.ListType", "Type")
                         .WithMany("ListItems")
                         .HasForeignKey("ListTypeName")
                         .HasPrincipalKey("Name")
@@ -101,7 +103,7 @@ namespace WebAPI.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.ListType", b =>
+            modelBuilder.Entity("WebAPI.Models.DbModels.ListType", b =>
                 {
                     b.Navigation("ListItems");
                 });
