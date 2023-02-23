@@ -1,4 +1,5 @@
-﻿using WebAPI.Models.DbModels;
+﻿using System.Xml.Linq;
+using WebAPI.Models.DbModels;
 using WebAPI.Models.Dtos;
 using WebAPI.Repositories;
 using WebAPI.Services.ListItems.Interfaces;
@@ -15,6 +16,12 @@ namespace WebAPI.Services.ListItems
         public ListItem Create(CreateListItemDto dto)
         {
             ListItem newItem = new(dto);
+
+            if (dto.IsNewListType)
+                newItem.Type = new()
+                {
+                    Name = dto.ListTypeName,
+                };
 
             try
             {

@@ -10,7 +10,7 @@ namespace WebAPI.Models.DbModels
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime LastUpdatedDate { get; set; } = DateTime.Now;
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
         public List<ListItem> ListItems { get; set; }
         public ListType() { }
     }
