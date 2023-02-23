@@ -15,13 +15,13 @@ namespace WebAPI.Services.ListItems
         }
         public ListItem Create(CreateListItemDto dto)
         {
-            ListItem newItem = new(dto);
+            ListType? listType = dto.IsNewListType ? 
+                new() { Name = dto.ListTypeName } : 
+                unitOfWork.ListType.Query(x => x.Name == dto.ListTypeName).FirstOrDefault();
 
-            if (dto.IsNewListType)
-                newItem.Type = new()
-                {
-                    Name = dto.ListTypeName,
-                };
+            if (listType == null) throw new Exception("Invalid List Type.");
+
+            ListItem newItem = new(dto, listType);
 
             try
             {

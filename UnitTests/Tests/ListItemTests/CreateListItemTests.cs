@@ -25,6 +25,7 @@ namespace UnitTests.Tests.ListItemTests
             context.SaveChanges();
 
             var createListItemDto = ListItemBuilder.BuildRandom();
+            createListItemDto.IsNewListType = false;
             var createdListItem = createListItemService.Create(createListItemDto);
 
             var listItemFromDb = context.ListItems.FirstOrDefault(x => x.Id == createdListItem.Id);
@@ -57,6 +58,7 @@ namespace UnitTests.Tests.ListItemTests
             var createListItemService = new CreateListItemService(unitOfWork);
 
             var createListItemDto = ListItemBuilder.BuildRandom();
+            createListItemDto.IsNewListType = false;
 
             Assert.Throws<Exception>(() => createListItemService.Create(createListItemDto));
         }
@@ -87,7 +89,6 @@ namespace UnitTests.Tests.ListItemTests
             var createListItemService = new CreateListItemService(unitOfWork);
 
             var createListItemDto = ListItemBuilder.BuildRandom();
-            createListItemDto.IsNewListType = true;
             createListItemDto.ListTypeName = "NewType";
 
             ListType? typeFromDb = context.ListTypes.FirstOrDefault(x => x.Name == "NewType");
