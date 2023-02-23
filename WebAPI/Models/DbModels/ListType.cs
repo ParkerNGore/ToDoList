@@ -13,5 +13,10 @@ namespace WebAPI.Models.DbModels
         public string Description { get; set; } = "";
         public List<ListItem> ListItems { get; set; }
         public ListType() { }
+        public ListType(string Name, string Description = "") 
+        {
+            this.Name = Name;
+        }
+
     }
 }

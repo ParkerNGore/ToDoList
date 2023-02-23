@@ -15,11 +15,9 @@ namespace WebAPI.Services.ListItems
         }
         public ListItem Create(CreateListItemDto dto)
         {
-            ListType? listType = dto.IsNewListType ? 
-                new() { Name = dto.ListTypeName } : 
-                unitOfWork.ListType.Query(x => x.Name == dto.ListTypeName).FirstOrDefault();
-
-            if (listType == null) throw new Exception("Invalid List Type.");
+            ListType? listType = unitOfWork.ListType.Query(x => x.Name == dto.ListTypeName).FirstOrDefault();
+            if (listType == null && dto.IsNewListType)
+                listType = new(dto.ListTypeName);
 
             ListItem newItem = new(dto, listType);
 
@@ -31,7 +29,7 @@ namespace WebAPI.Services.ListItems
             catch (Exception e)
             {
 
-                throw;
+                throw new Exception($"Failed to Add List Item to Database. See Exception {e}. With Inner Exception {e.Message}.");
             }
 
             return newItem;

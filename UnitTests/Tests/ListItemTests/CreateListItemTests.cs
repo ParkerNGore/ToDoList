@@ -64,7 +64,7 @@ namespace UnitTests.Tests.ListItemTests
         }
 
         [Fact]
-        public void ShouldFailToCreateWithDuplicateType()
+        public void ShouldNotCreateNewType()
         {
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
@@ -77,7 +77,35 @@ namespace UnitTests.Tests.ListItemTests
 
             var createListItemDto = ListItemBuilder.BuildRandom();
 
-            Assert.Throws<Exception>(() => createListItemService.Create(createListItemDto));
+            var listTypes = context.ListTypes.ToList();
+            Assert.True(listTypes.Count == 1);
+            Assert.Equal("Default", listTypes.First().Name);
+
+            var createdItem = createListItemService.Create(createListItemDto);
+
+            Assert.NotNull(createdItem);
+
+            var listTypesAfterCreate = context.ListTypes.ToList();
+            Assert.True(listTypesAfterCreate.Count == 1);
+            Assert.Equal("Default", listTypesAfterCreate.First().Name);
+
+            var listItemFromDb = context.ListItems.FirstOrDefault(x => x.Id == createdItem.Id);
+
+            Assert.Equal(createdItem.Title, listItemFromDb.Title);
+            Assert.Equal(createdItem.Description, listItemFromDb.Description);
+            Assert.Equal(createdItem.Importance, listItemFromDb.Importance);
+            Assert.Equal(createdItem.Frequency, listItemFromDb.Frequency);
+            Assert.Equal(createdItem.ListTypeName, listItemFromDb.ListTypeName);
+            Assert.Equal(createdItem.CreatedDate, listItemFromDb.CreatedDate);
+            Assert.Equal(createdItem.LastUpdatedDate, listItemFromDb.LastUpdatedDate);
+            Assert.Equal(createdItem.DueDate, listItemFromDb.DueDate);
+
+            Assert.Equal(createListItemDto.Title, listItemFromDb.Title);
+            Assert.Equal(createListItemDto.Description, listItemFromDb.Description);
+            Assert.Equal(createListItemDto.Importance, listItemFromDb.Importance);
+            Assert.Equal(createListItemDto.Frequency, listItemFromDb.Frequency);
+            Assert.Equal(createListItemDto.ListTypeName, listItemFromDb.ListTypeName);
+            Assert.Equal(createListItemDto.DueDate, listItemFromDb.DueDate);
         }
 
         [Fact]
