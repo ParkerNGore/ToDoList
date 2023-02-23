@@ -17,7 +17,7 @@ namespace UnitTests.Tests.ListItemTests
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
             var createListItemService = new CreateListItemService(unitOfWork);
-            var getListItemService = new GetListService();
+            var getListItemService = new GetListService(unitOfWork);
 
             var itemType = ListTypeBuilder.BuildDefault();
             context.Add(itemType);
@@ -71,16 +71,14 @@ namespace UnitTests.Tests.ListItemTests
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
             var createListItemService = new CreateListItemService(unitOfWork);
-            var getListItemService = new GetListService();
+            var getListItemService = new GetListService(unitOfWork);
 
             context.Add(ListTypeBuilder.BuildDefault());
             context.SaveChanges();
 
             createListItemService.Create(ListItemBuilder.BuildRandom());
 
-            var itemFromDb = getListItemService.GetListItem(new Guid().ToString());
-
-            Assert.Null(itemFromDb);
+            Assert.Throws<Exception>(() => getListItemService.GetListItem(new Guid().ToString()));
         }
         [Fact]
         public void ShouldGetAll()
