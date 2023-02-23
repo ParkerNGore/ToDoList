@@ -31,11 +31,11 @@ namespace UnitTests.Tests.ListItemTests
 
             Assert.NotNull(createdListItem);
 
-            var deleteListItemService = new DeleteListItemService();
+            var deleteListItemService = new DeleteListItemService(unitOfWork);
             deleteListItemService.Delete(createdListItem.Id);
 
             var nullListItem = context.ListItems.FirstOrDefault(x => x.Id == listItemId);
-            var listTypeFromDb = context.ListTypes.Include(x => x.ListItems).FirstOrDefault(x => x.Name == listType.Id);
+            var listTypeFromDb = context.ListTypes.Include(x => x.ListItems).FirstOrDefault(x => x.Id == listType.Id);
 
             Assert.Null(nullListItem);
             Assert.NotNull(listTypeFromDb);
@@ -47,7 +47,7 @@ namespace UnitTests.Tests.ListItemTests
             // Test feels somehow inadequate or not enough
             var context = ContextBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build(context);
-            var deleteListItemService = new DeleteListItemService();
+            var deleteListItemService = new DeleteListItemService(unitOfWork);
 
             Assert.Throws<Exception>(() => deleteListItemService.Delete("Not A GUID"));
         }

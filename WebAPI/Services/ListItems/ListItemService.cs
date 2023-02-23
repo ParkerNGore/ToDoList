@@ -26,7 +26,7 @@ namespace WebAPI.Services.ListItems
         public ListItem GetListItem(string id) => getListService.GetListItem(id);
         public IEnumerable<ListItem> GetAllLists() => getAllListsService.GetAllLists();
         public ListItem Create(CreateListItemDto dto) => createListService.Create(dto);
-        public ListItem Delete(string id) => deleteListService.Delete(id);
+        public void Delete(string id) => deleteListService.Delete(id);
         public ListItem UpdateListItem(ListItem item) => updateListService.UpdateListItem(item);
         public IEnumerable<ListItem> GetAllListItemsByType(string typeName) => getAllListsByType.GetAllListItemsByType(typeName);
     }
