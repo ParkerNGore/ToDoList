@@ -4,6 +4,6 @@ namespace WebAPI.Services.ListItems.Interfaces
 {
     public interface IUpdateListService
     {
-        ListItem UpdateListItem(ListItem item);
+        ListItem UpdateListItem(ListItem item, bool isNewListType);
     }
 }

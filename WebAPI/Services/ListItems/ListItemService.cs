@@ -8,12 +8,12 @@ namespace WebAPI.Services.ListItems
     {
         private readonly IGetListService getListService;
         private readonly IGetAllListsService getAllListsService;
-        private readonly IGetAllListsByType getAllListsByType;
+        private readonly IFilterListItemsService getAllListsByType;
         private readonly ICreateListService createListService;
         private readonly IDeleteListService deleteListService;
         private readonly IUpdateListService updateListService;
 
-        public ListItemService(IGetListService getListService, IGetAllListsService getAllListsService, IGetAllListsByType getAllListsByType, ICreateListService createListService, IDeleteListService deleteListService, IUpdateListService updateListService)
+        public ListItemService(IGetListService getListService, IGetAllListsService getAllListsService, IFilterListItemsService getAllListsByType, ICreateListService createListService, IDeleteListService deleteListService, IUpdateListService updateListService)
         {
             this.getListService = getListService;
             this.getAllListsService = getAllListsService;
@@ -27,7 +27,10 @@ namespace WebAPI.Services.ListItems
         public IEnumerable<ListItem> GetAllLists() => getAllListsService.GetAllLists();
         public ListItem Create(CreateListItemDto dto) => createListService.Create(dto);
         public void Delete(string id) => deleteListService.Delete(id);
-        public ListItem UpdateListItem(ListItem item) => updateListService.UpdateListItem(item);
-        public IEnumerable<ListItem> GetAllListItemsByType(string typeName) => getAllListsByType.GetAllListItemsByType(typeName);
+        public ListItem UpdateListItem(ListItem item, bool isNewType) => updateListService.UpdateListItem(item, isNewType);
+        public IEnumerable<ListItem> FilterListItems(string typeName, bool ignoreCompleted) => getAllListsByType.FilterListItems(typeName, ignoreCompleted);
+        public IEnumerable<ListItem> GetByViewWithOptions(GetListDto dto) => getListService.GetByViewWithOptions(dto);
+
+
     }
 }

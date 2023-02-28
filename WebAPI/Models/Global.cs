@@ -17,4 +17,11 @@
         High,
         Critical,
     }
+    
+    public enum CalendarView
+    {
+        Day,
+        Week,
+        Month,
+    }
 }

@@ -1,13 +1,13 @@
 ﻿using WebAPI.Models.DbModels;
-using WebAPI.Repositories;
+using WebAPI.Repositories.Interfaces;
 using WebAPI.Services.ListItems.Interfaces;
 
 namespace WebAPI.Services.ListItems
 {
     public class DeleteListItemService : IDeleteListService
     {
-        private readonly UnitOfWork unitOfWork;
-        public DeleteListItemService(UnitOfWork unitOfWork)
+        private readonly IUnitOfWork unitOfWork;
+        public DeleteListItemService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }

@@ -1,0 +1,114 @@
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+
+.btn-primary {
+  background-color: #39d0ff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0.5rem;
+  text-shadow: 1px 1px 5px black;
+}
+
+body {
+  background-color: #303030;
+  color: #fafafa;
+}
+table,
+thead,
+tbody,
+th,
+tr,
+td {
+  border: 3.5px solid #444444 !important;
+}
+th {
+  text-shadow: 1px 1px 2px black;
+}
+
+.month-th {
+  text-align: center;
+  height: 30px;
+  font-weight: 700;
+  border: 1px solid #ddd;
+}
+
+.month-td {
+  height: 12vh;
+  padding-top: 25px;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #ddd;
+}
+
+.week-th {
+  text-align: center;
+  height: 30px;
+  font-weight: 700;
+  border: 1px solid #ddd;
+}
+
+.week-td {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #ddd;
+}
+
+.day {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+}
+
+span {
+  margin-left: 5px;
+}
+.task {
+  cursor: pointer;
+  font-weight: 700;
+  text-align: left !important;
+  color: black !important;
+  padding-left: 0.15rem !important;
+  padding-right: 0.15rem !important;
+  margin: 0.25rem;
+  border-radius: 10px;
+}
+
+.task-low-importance {
+  background-color: aqua;
+}
+.task-normal-importance {
+  background-color: rgb(225, 214, 10);
+}
+.task-high-importance {
+  background-color: orange;
+}
+.task-critical-importance {
+  background-color: firebrick;
+}
+.task-complete {
+  background-color: green !important;
+}
+
+.view-select {
+  background-color: #39d0ff !important;
+  color: #fafafa !important;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: 1px 1px 5px black;
+}
+
+h5 {
+  color: black;
+}

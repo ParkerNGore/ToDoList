@@ -1,0 +1,26 @@
+<article>
+  <table style="table-layout: fixed; width: 100%" mat-table [dataSource]="data">
+    <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+      <th class="week-th" *matHeaderCellDef>
+        {{ col }}
+      </th>
+      <td class="week-td" *matCellDef="let element" style="text-align: center">
+        <span>{{ element[col].number }}</span>
+        <div
+          [class.task]="true"
+          [class.task-low-importance]="task.importance == 0"
+          [class.task-normal-importance]="task.importance == 1"
+          [class.task-high-importance]="task.importance == 2"
+          [class.task-critical-importance]="task.importance == 3"
+          [class.task-complete]="task.isTaskComplete"
+          *ngFor="let task of element[col].tasks"
+          (click)="openTaskModal(task.title)"
+        >
+          <span>{{ task.title }}</span>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</article>

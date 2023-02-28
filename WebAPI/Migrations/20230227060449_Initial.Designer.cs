@@ -12,7 +12,7 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230223001557_Initial")]
+    [Migration("20230227060449_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,12 @@ namespace WebAPI.Migrations
                     b.Property<string>("Importance")
                         .IsRequired()
                         .HasColumnType("nvarchar(24)");
+
+                    b.Property<bool>("IsAllDay")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime2");

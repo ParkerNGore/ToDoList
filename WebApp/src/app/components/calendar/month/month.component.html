@@ -1,0 +1,59 @@
+<article *ngIf="show">
+  <table
+    style="table-layout: fixed; width: 100%"
+    mat-table
+    [dataSource]="dataSource"
+  >
+    <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+      <th *matHeaderCellDef class="month-th">
+        {{ col }}
+      </th>
+      <td class="month-td" *matCellDef="let element">
+        <span class="day">{{ element[col].number }}</span>
+        <div
+          [class.task]="true"
+          [class.task-low-importance]="task.importance > 1"
+          [class.task-normal-importance]="task.importance == 1"
+          [class.task-high-importance]="task.importance == 2"
+          [class.task-critical-importance]="task.importance == 3"
+          [class.task-complete]="task.isTaskComplete"
+          *ngFor="let task of element[col].tasks"
+          (click)="openTaskModal(task)"
+        >
+          <span>{{ task.title }}</span>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</article>
+
+<!-- <table style="table-layout: fixed; width: 100%" mat-table [dataSource]="calendar">
+  {{
+    testingFunction()
+  }}
+  <thead>
+    <th>Sunday</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="day">1</span>
+        <div class="task"><span>Task</span></div>
+      </td>
+      <td><span class="day">1</span></td>
+      <td><span class="day">1</span></td>
+      <td><span class="day">1</span></td>
+      <td><span class="day">1</span></td>
+      <td><span class="day">1</span></td>
+      <td><span class="day">1</span></td>
+    </tr>
+  </tbody>
+</table> -->

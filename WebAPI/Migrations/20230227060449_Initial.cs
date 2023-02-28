@@ -37,6 +37,8 @@ namespace WebAPI.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Frequency = table.Column<string>(type: "nvarchar(24)", nullable: false),
                     Importance = table.Column<string>(type: "nvarchar(24)", nullable: false),
+                    IsAllDay = table.Column<bool>(type: "bit", nullable: false),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
                     ListTypeName = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>

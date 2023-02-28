@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<form [formGroup]="filterForm" (ngSubmit)="submit()">
+  <div class="modal-body">
+    <div>
+      <label for="listTypes" class="form-label">List Types</label>
+      <select class="form-select" id="listTypes" formControlName="listTypes">
+        <option *ngFor="let type of listTypes" value="Default">
+          {{ type }}
+        </option>
+      </select>
+
+      <label for="ignoreCompleted" class="form-label"
+        >Ignore Completed Tasks?</label
+      >
+      <input
+        type="checkbox"
+        class="form-control"
+        id="ignoreCompleted"
+        formControlName="ignoreCompleted"
+      />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Close
+    </button>
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </div>
+</form>

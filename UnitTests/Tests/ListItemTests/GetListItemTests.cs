@@ -46,7 +46,7 @@ namespace UnitTests.Tests.ListItemTests
             var unitOfWork = UnitOfWorkBuilder.Build(context);
 
             var createListItemService = new CreateListItemService(unitOfWork);
-            var getAllListsByTypeService = new GetAllListsByTypeService(unitOfWork);
+            var getAllListsByTypeService = new FilterListItemsService(unitOfWork);
 
             var itemType = ListTypeBuilder.BuildDefault();
             context.Add(itemType);
@@ -59,10 +59,48 @@ namespace UnitTests.Tests.ListItemTests
             createListItemDto = ListItemBuilder.BuildRandom();
             createListItemService.Create(createListItemDto);
 
-            var list = getAllListsByTypeService.GetAllListItemsByType("Default");
+            var list = getAllListsByTypeService.FilterListItems("Default", false);
 
             Assert.True(list.Any());
             Assert.True(list.Count() == 3);
+        }
+        [Fact]
+        public void ShouldGetAllByTypeNotCompleted()
+        {
+            var context = ContextBuilder.Build();
+            var unitOfWork = UnitOfWorkBuilder.Build(context);
+
+            var createListItemService = new CreateListItemService(unitOfWork);
+            var filterListByType = new FilterListItemsService(unitOfWork);
+
+            var itemType = ListTypeBuilder.BuildDefault();
+            context.Add(itemType);
+            context.SaveChanges();
+
+            var createListItemDto = ListItemBuilder.BuildRandom();
+            createListItemService.Create(createListItemDto);
+            createListItemDto = ListItemBuilder.BuildRandom();
+            createListItemService.Create(createListItemDto);
+            createListItemDto = ListItemBuilder.BuildRandom();
+            createListItemService.Create(createListItemDto);
+
+            var listFromDb = context.ListItems.ToList();
+            listFromDb.First().IsCompleted = true;
+            context.SaveChanges();
+
+
+            var list = filterListByType.FilterListItems("Default", true);
+
+            Assert.NotNull(listFromDb);
+            Assert.NotNull(list);
+
+            Assert.True(listFromDb.Any());
+            Assert.True(list.Any());
+
+            Assert.True(list.Count() == 2);
+            Console.WriteLine(listFromDb.Count());
+            Assert.True(listFromDb.Count() == 3);
+
         }
         [Fact]
         public void ShouldFailGetSingle()

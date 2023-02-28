@@ -46,6 +46,12 @@ namespace WebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(24)");
 
+                    b.Property<bool>("IsAllDay")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime2");
 

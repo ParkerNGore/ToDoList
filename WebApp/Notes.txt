@@ -1,0 +1,16 @@
+Things To Improve:
+
+Major Changes
+1. Backend should send the frontend the View Models and the Frontend should just render them
+
+Day View
+1. Time Column can be static and doesn't need to be generated and regenerated.
+
+All Views
+1. Set limit the tasks with a ... 3 more at the bottom to view the others
+2. Automatically open create modal when clicking on square that presets Due Date to date of respective square
+
+Other
+1. Should have just gotten a package to manage dates >-> C# Dates > JS Dates
+2. Learn more about angular binding and best practices/optimizations, setTimeout is inconsistent and probably not the right way :P
+3. GetListTypes change to only return 5 to 20 and then have a ...load more

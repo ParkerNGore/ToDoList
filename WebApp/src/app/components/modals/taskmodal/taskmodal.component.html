@@ -1,0 +1,89 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<form [formGroup]="taskForm" (ngSubmit)="save()">
+  <div class="modal-body">
+    <div>
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+      />
+      <label for="dueDate" class="form-label">Due Date</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="dueDate"
+        value="dueDate"
+        formControlName="dueDate"
+      />
+    </div>
+    <div>
+      <label for="frequency" class="form-label">Repeat Frequency</label>
+      <select class="form-select" id="frequency" formControlName="frequency">
+        <option *ngFor="let frequency of frequencies">
+          {{ frequency }}
+        </option>
+      </select>
+      <label for="importance" class="form-label">Importance</label>
+      <select
+        class="form-select"
+        id="importance"
+        formControlName="importance"
+        value="importance"
+      >
+        <option *ngFor="let importance of importanceLevels">
+          {{ importance }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="listTypeName" class="form-label">List Type</label>
+      <input
+        type="text"
+        class="form-control"
+        id="listTypeName"
+        formControlName="listTypeName"
+      />
+    </div>
+    <div class="form-check">
+      <label for="isNewListType" class="form-check-label" style="color: black"
+        >New List Type?
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="isNewListType"
+          [checked]="isNewListType"
+          (change)="onCheckboxClick($event)"
+          formControlName="isNewListType"
+      /></label>
+    </div>
+    <div class="form-check">
+      <label for="isCompleted" class="form-check-label" style="color: black"
+        >Complete?
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="isCompleted"
+          formControlName="isCompleted"
+      /></label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Close
+    </button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-danger" (click)="delete()">
+      Delete Task Series
+    </button>
+  </div>
+</form>
