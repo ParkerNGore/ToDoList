@@ -146,6 +146,7 @@ export class TaskModalComponent implements OnInit {
         console.log(res);
       });
   };
+
   save = () => {
     if (this.taskForm.valid)
       if (this.listItem != null)

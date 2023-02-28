@@ -40,7 +40,7 @@ export class ListService {
 
   delete(id: string): Observable<any> {
     return this.http
-      .delete<ListItem>(this.apiUrl + '/list/update/' + id, this.httpOptions)
+      .delete<ListItem>(this.apiUrl + '/list/delete/' + id, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 

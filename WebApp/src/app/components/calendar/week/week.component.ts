@@ -48,21 +48,11 @@ export class WeekComponent implements OnInit {
       data: { listItem: listItem },
     });
     this.taskModalRef.onClose.subscribe((message: any) => {
-      for (var i = 0; i < this.listItems.length; i++) {
-        var obj = this.listItems[i];
-        if (obj.id == this.listItemReferenceId) {
-          this.listItemIndexReference = i;
-        }
-      }
-
-      const list = this.listItems;
       this.listService
-        .getListItem(this.listItemReferenceId)
-        .subscribe((res) => {
-          list[this.listItemIndexReference] = res;
-          this.listItems = list;
+        .getByViewWithOptions(this.getListDto)
+        .subscribe((res: ListItem[]) => {
+          this.listItems = res;
         });
-      console.log(this.listItems);
 
       setTimeout(() => {
         this.data = this.createData() as any;
